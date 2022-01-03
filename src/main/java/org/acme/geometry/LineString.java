@@ -39,4 +39,9 @@ public class LineString implements Geometry{
             point.translate(dx, dy);
         }
     }
+
+    @Override
+    public Geometry clone(){
+        return new LineString(this.points);
+    }
 }
