@@ -32,4 +32,11 @@ public class LineString implements Geometry{
     public boolean isEmpty() {
         return getNumPoints() == 0;
     }
+
+    @Override
+    public void translate(double dx, double dy) {
+        for (Point point : points){
+            point.translate(dx, dy);
+        }
+    }
 }
