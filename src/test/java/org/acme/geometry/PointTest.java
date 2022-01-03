@@ -17,16 +17,17 @@ public class PointTest {
 
     @Test
     public void testConstructor() {
-        Coordinate c = new Coordinate(3.14, 2.72);
-        Point p = new Point(c);
-        Assert.assertEquals(c, p.getCoordinate());
+        Point p = SampleFactory.createPointA();
+        
+        Assert.assertEquals(3.14, p.getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(2.72, p.getCoordinate().getY(), EPSILON);
 		Assert.assertFalse(p.isEmpty());
     }
 
     @Test
     public void testTranslate() {
-        Coordinate c = new Coordinate(3.14, 2.72);
-        Point p = new Point(c);
+        Point p = SampleFactory.createPointA();
+
         p.translate(10, 10);
         Assert.assertEquals(13.14, p.getCoordinate().getX(), EPSILON);
         Assert.assertEquals(12.72, p.getCoordinate().getY(), EPSILON);
