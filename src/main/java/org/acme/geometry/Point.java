@@ -20,4 +20,9 @@ public class Point implements Geometry{
     public String getType() {
         return "Point";
     }
+
+    @Override
+    public boolean isEmpty() {
+        return Double.isNaN(coordinate.getX());
+    }
 }
