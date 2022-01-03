@@ -25,4 +25,11 @@ public class Point implements Geometry{
     public boolean isEmpty() {
         return Double.isNaN(coordinate.getX());
     }
+
+    @Override
+    public void translate(double dx, double dy) {
+        double newX = this.coordinate.getX() + dx;
+        double newY = this.coordinate.getY() + dy;
+        this.coordinate = new Coordinate(newX, newY);
+    }
 }
