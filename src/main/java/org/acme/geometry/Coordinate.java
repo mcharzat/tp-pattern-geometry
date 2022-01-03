@@ -6,8 +6,8 @@ public class Coordinate {
     private final double y;
 
     public Coordinate(){
-        this.x = 0.0;
-        this.y = 0.0;
+        this.x = Double.NaN;
+        this.y = Double.NaN;
     }
 
     public Coordinate(double x, double y){
@@ -21,5 +21,9 @@ public class Coordinate {
 
     public double getY() {
         return y;
+    }
+
+    public boolean isEmpty(){
+        return Double.isNaN(x);
     }
 }

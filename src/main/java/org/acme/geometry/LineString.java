@@ -1,5 +1,6 @@
 package org.acme.geometry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LineString implements Geometry{
@@ -7,7 +8,7 @@ public class LineString implements Geometry{
     private List<Point> points;
 
     public LineString() {
-        this.points = null;
+        this.points = new ArrayList<Point>();
     }
 
     public LineString(List<Point> points) {
@@ -25,5 +26,10 @@ public class LineString implements Geometry{
     @Override
     public String getType() {
         return "LineString";
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return getNumPoints() == 0;
     }
 }
