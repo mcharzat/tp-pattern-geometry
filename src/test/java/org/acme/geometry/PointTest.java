@@ -18,7 +18,7 @@ public class PointTest {
     @Test
     public void testConstructor() {
         Point p = SampleFactory.createPointA();
-        
+
         Assert.assertEquals(3.14, p.getCoordinate().getX(), EPSILON);
         Assert.assertEquals(2.72, p.getCoordinate().getY(), EPSILON);
 		Assert.assertFalse(p.isEmpty());
@@ -32,5 +32,18 @@ public class PointTest {
         Assert.assertEquals(13.14, p.getCoordinate().getX(), EPSILON);
         Assert.assertEquals(12.72, p.getCoordinate().getY(), EPSILON);
 		Assert.assertFalse(p.isEmpty());
+    }
+
+    @Test
+    public void testClone() {
+        Point p = SampleFactory.createPointA();
+
+        Point copy = (Point) p.clone();
+        p.translate(10.0, 10.0);
+        Assert.assertEquals(13.14, p.getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(12.72, p.getCoordinate().getY(), EPSILON);
+        Assert.assertEquals(3.14, copy.getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(2.72, copy.getCoordinate().getY(), EPSILON);
+        Assert.assertTrue(p != copy);
     }
 }
