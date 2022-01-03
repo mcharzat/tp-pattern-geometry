@@ -37,4 +37,22 @@ public class LineStringTest {
         Assert.assertEquals(37.2, l.getPointN(1).getCoordinate().getY(), EPSILON);
 		Assert.assertFalse(l.isEmpty());
     }
+
+    @Test
+    public void testClone() {
+        LineString l = SampleFactory.createLineStringAB();
+
+        LineString copy = (LineString) l.clone();
+        l.translate(10.0, 10.0);
+
+        Assert.assertEquals(13.14, l.getPointN(0).getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(12.72, l.getPointN(0).getCoordinate().getY(), EPSILON);
+        Assert.assertEquals(41.4, l.getPointN(1).getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(37.2, l.getPointN(1).getCoordinate().getY(), EPSILON);
+        Assert.assertEquals(3.14, copy.getPointN(0).getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(2.72, copy.getPointN(0).getCoordinate().getY(), EPSILON);
+        Assert.assertEquals(31.4, copy.getPointN(1).getCoordinate().getX(), EPSILON);
+        Assert.assertEquals(27.2, copy.getPointN(1).getCoordinate().getY(), EPSILON);
+        Assert.assertTrue(l != copy);
+    }
 }
