@@ -10,9 +10,8 @@ public class WktVisitorTest {
         Point p = new Point();
 
         WktVisitor visitor = new WktVisitor();
-        p.accept(visitor);
 
-        Assert.assertEquals("POINT EMPTY", visitor.getResult());
+        Assert.assertEquals("POINT EMPTY", p.accept(visitor));
     }
 
     @Test
@@ -20,9 +19,8 @@ public class WktVisitorTest {
         Point p = SampleFactory.createPointA();
 
         WktVisitor visitor = new WktVisitor();
-        p.accept(visitor);
 
-        Assert.assertEquals("POINT(3.14 2.72)", visitor.getResult());
+        Assert.assertEquals("POINT(3.14 2.72)", p.accept(visitor));
     }
 
     @Test
@@ -30,9 +28,8 @@ public class WktVisitorTest {
         LineString l = new LineString();
 
         WktVisitor visitor = new WktVisitor();
-        l.accept(visitor);
 
-        Assert.assertEquals("LINESTRING EMPTY", visitor.getResult());
+        Assert.assertEquals("LINESTRING EMPTY", l.accept(visitor));
     }
 
     @Test
@@ -40,9 +37,8 @@ public class WktVisitorTest {
         LineString l = SampleFactory.createLineStringAB();
 
         WktVisitor visitor = new WktVisitor();
-        l.accept(visitor);
 
-        Assert.assertEquals("LINESTRING(3.14 2.72,31.4 27.2)", visitor.getResult());
+        Assert.assertEquals("LINESTRING(3.14 2.72,31.4 27.2)", l.accept(visitor));
     }
 
     @Test
@@ -50,9 +46,8 @@ public class WktVisitorTest {
         GeometryCollection g = new GeometryCollection();
 
         WktVisitor visitor = new WktVisitor();
-        g.accept(visitor);
 
-        Assert.assertEquals("GEOMETRYCOLLECTION EMPTY", visitor.getResult());
+        Assert.assertEquals("GEOMETRYCOLLECTION EMPTY", g.accept(visitor));
     }
 
     @Test
@@ -60,10 +55,9 @@ public class WktVisitorTest {
         GeometryCollection g = SampleFactory.createGeometryCollection();
 
         WktVisitor visitor = new WktVisitor();
-        g.accept(visitor);
 
         Assert.assertEquals(
             "GEOMETRYCOLLECTION(POINT(3.14 2.72),POINT(31.4 27.2),LINESTRING(3.14 2.72,31.4 27.2))",
-             visitor.getResult());
+            g.accept(visitor));
     }
 }

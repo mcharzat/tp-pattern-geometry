@@ -1,6 +1,6 @@
 package org.acme.geometry;
 
-public class EnvelopeBuilder implements GeometryVisitor{
+public class EnvelopeBuilder implements GeometryVisitor<Envelope>{
 
     protected Envelope envelope;
 
@@ -50,23 +50,26 @@ public class EnvelopeBuilder implements GeometryVisitor{
     }
 
     @Override
-    public void visit(Point point) {
+    public Envelope visit(Point point) {
         this.insert(point.getCoordinate());
+        return this.envelope;
     }
 
     @Override
-    public void visit(LineString lineString) {
+    public Envelope visit(LineString lineString) {
         for (int k = 0; k < lineString.getNumPoints(); k++){
             Point point = lineString.getPointN(k);
             this.insert(point.getCoordinate());
         }
+        return this.envelope;
     }
 
     @Override
-    public void visit(GeometryCollection geometryCollection) {
+    public Envelope visit(GeometryCollection geometryCollection) {
         for (int k = 0; k < geometryCollection.getNumGeometries(); k++){
             Geometry geometry = geometryCollection.getGeometryN(k);
             geometry.accept(this);
         }
+        return this.envelope;
     }
 }

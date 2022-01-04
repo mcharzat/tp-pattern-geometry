@@ -8,11 +8,13 @@ public class GeometryWithCachedEnvelope implements Geometry, GeometryListener{
     public GeometryWithCachedEnvelope(Geometry original, Envelope cachedEnvelope) {
         this.original = original;
         this.cachedEnvelope = cachedEnvelope;
+        this.original.addListener(this);
     }
 
     public GeometryWithCachedEnvelope(Geometry original) {
         this.original = original;
         this.cachedEnvelope = new Envelope();
+        this.original.addListener(this);
     }
 
     @Override
@@ -42,8 +44,8 @@ public class GeometryWithCachedEnvelope implements Geometry, GeometryListener{
     }
 
     @Override
-    public void accept(GeometryVisitor visitor) {
-        original.accept(visitor);        
+    public <T> T accept(GeometryVisitor<T> visitor) {
+        return original.accept(visitor);        
     }
 
     @Override
