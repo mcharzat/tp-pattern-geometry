@@ -34,4 +34,20 @@ public class WktVisitor implements GeometryVisitor{
     public String getResult(){
         return buffer.toString();
     }
+
+    @Override
+    public void visit(GeometryCollection geometryCollection) {
+        if (geometryCollection.isEmpty()) buffer.append("GEOMETRYCOLLECTION EMPTY");
+        else {
+            buffer.append("GEOMETRYCOLLECTION(");
+            Geometry firstGeometry = geometryCollection.getGeometryN(0);
+            firstGeometry.accept(this);
+            for (int k = 1; k < geometryCollection.getNumGeometries(); k++){
+                buffer.append(",");
+                Geometry geometry = geometryCollection.getGeometryN(k);
+                geometry.accept(this);
+            }
+            buffer.append(")");
+        }
+    }
 }
