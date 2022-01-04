@@ -8,5 +8,6 @@ public interface Geometry {
     public Envelope getEnvelope();
     public Geometry clone();
     public void accept(GeometryVisitor visitor);
+    public void addListener(GeometryListener listener);
     
 }
