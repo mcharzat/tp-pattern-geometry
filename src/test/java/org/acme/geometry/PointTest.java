@@ -57,4 +57,11 @@ public class PointTest {
         Assert.assertEquals(3.14, envelope.getXmax(), EPSILON);
         Assert.assertEquals(2.72, envelope.getYmax(), EPSILON);
     }
+
+    @Test
+    public void testAsText(){
+        Point p = SampleFactory.createPointA();
+
+        Assert.assertEquals("POINT(3.14 2.72)", p.asText());
+    }
 }
