@@ -31,6 +31,8 @@ public class Point extends AbstractGeometry{
         double newX = this.coordinate.getX() + dx;
         double newY = this.coordinate.getY() + dy;
         this.coordinate = new Coordinate(newX, newY);
+
+        this.triggerChange();
     }
 
     @Override
