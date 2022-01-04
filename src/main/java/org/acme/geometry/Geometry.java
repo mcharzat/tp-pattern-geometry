@@ -7,5 +7,6 @@ public interface Geometry {
     public void translate(double dx, double dy);
     public Envelope getEnvelope();
     public Geometry clone();
+    public void accept(GeometryVisitor visitor);
     
 }
