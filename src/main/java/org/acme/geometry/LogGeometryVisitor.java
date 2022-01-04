@@ -2,7 +2,7 @@ package org.acme.geometry;
 
 import java.io.PrintStream;
 
-public class LogGeometryVisitor implements GeometryVisitor{
+public class LogGeometryVisitor implements GeometryVisitor<Void>{
 
     private PrintStream out;
 
@@ -15,20 +15,23 @@ public class LogGeometryVisitor implements GeometryVisitor{
     }
 
     @Override
-    public void visit(Point point) {
+    public Void visit(Point point) {
         out.println( "Je suis un point avec x=" + point.getCoordinate().getX() +
             " et y=" + point.getCoordinate().getY());
+        return null;
     }
 
     @Override
-    public void visit(LineString lineString) {
+    public Void visit(LineString lineString) {
         out.println( "Je suis une polyligne défini par " + 
             lineString.getNumPoints() + " point(s).");
+        return null;
     }
 
     @Override
-    public void visit(GeometryCollection geometryCollection) {
+    public Void visit(GeometryCollection geometryCollection) {
         out.println( "Je suis une collection de géométries contenant " + 
             geometryCollection.getNumGeometries() + " géométrie(s).");
+        return null;
     }
 }

@@ -26,12 +26,7 @@ public class GeometryWithCachedEnvelopeTest {
         Assert.assertEquals(3.14, envelope1.getXmin(), EPSILON);
 
         lineString.translate(10.0, 10.0);
-        Envelope envelope2 = cachedLineString.getEnvelope();
-        Assert.assertEquals(3.14, envelope2.getXmin(), EPSILON);
-
-        lineString.addListener(cachedLineString);
-        lineString.translate(10.0, 10.0);
         Envelope envelope3 = cachedLineString.getEnvelope();
-        Assert.assertEquals(23.14, envelope3.getXmin(), EPSILON);
+        Assert.assertEquals(13.14, envelope3.getXmin(), EPSILON);
     }
 }

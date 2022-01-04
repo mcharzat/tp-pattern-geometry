@@ -26,8 +26,7 @@ public class EnveloppeBuilderTest {
         Point point = SampleFactory.createPointA();
         EnvelopeBuilder builder = new EnvelopeBuilder();
 
-        builder.visit(point);
-        Envelope envelope = builder.build();
+        Envelope envelope = builder.visit(point);
 
         Assert.assertEquals(3.14, envelope.getXmin(), EPSILON);
         Assert.assertEquals(2.72, envelope.getYmin(), EPSILON);
@@ -38,8 +37,7 @@ public class EnveloppeBuilderTest {
         LineString lineString = SampleFactory.createLineStringAB();
         EnvelopeBuilder builder = new EnvelopeBuilder();
 
-        builder.visit(lineString);
-        Envelope envelope = builder.build();
+        Envelope envelope = builder.visit(lineString);
 
         Assert.assertEquals(3.14, envelope.getXmin(), EPSILON);
         Assert.assertEquals(2.72, envelope.getYmin(), EPSILON);
@@ -52,8 +50,7 @@ public class EnveloppeBuilderTest {
         GeometryCollection geometryCollection = SampleFactory.createGeometryCollection();
         EnvelopeBuilder builder = new EnvelopeBuilder();
 
-        builder.visit(geometryCollection);
-        Envelope envelope = builder.build();
+        Envelope envelope = builder.visit(geometryCollection);
 
         Assert.assertEquals(3.14, envelope.getXmin(), EPSILON);
         Assert.assertEquals(2.72, envelope.getYmin(), EPSILON);
