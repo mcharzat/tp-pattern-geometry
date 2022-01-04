@@ -55,4 +55,15 @@ public class LineStringTest {
         Assert.assertEquals(27.2, copy.getPointN(1).getCoordinate().getY(), EPSILON);
         Assert.assertTrue(l != copy);
     }
+
+    @Test
+    public void testGetEnvelope() {
+        LineString l = SampleFactory.createLineStringAB();
+
+        Envelope envelope = l.getEnvelope();
+        Assert.assertEquals(3.14, envelope.getXmin(), EPSILON);
+        Assert.assertEquals(2.72, envelope.getYmin(), EPSILON);
+        Assert.assertEquals(31.4, envelope.getXmax(), EPSILON);
+        Assert.assertEquals(27.2, envelope.getYmax(), EPSILON);
+    }
 }
