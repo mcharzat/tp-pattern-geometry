@@ -40,4 +40,20 @@ public class LogGeometryVisitorTest {
 
         Assert.assertEquals(results[1], results[0]);
     }
+
+    @Test
+    public void testVisitGeometryCollection() throws UnsupportedEncodingException{
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(os);
+        LogGeometryVisitor visitor = new LogGeometryVisitor(out);
+
+        GeometryCollection geometryCollection = SampleFactory.createGeometryCollection();
+        geometryCollection.accept(visitor);
+
+        out.println("Je suis une collection de géométries contenant 3 géométrie(s).");
+        String result = os.toString("UTF8");
+        String[] results = result.split("\n");
+
+        Assert.assertEquals(results[1], results[0]);
+    }
 }

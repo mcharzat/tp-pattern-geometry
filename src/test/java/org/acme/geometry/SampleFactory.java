@@ -24,5 +24,14 @@ public class SampleFactory {
 
         return new LineString(points);
     }
+
+    public static GeometryCollection createGeometryCollection(){
+        List<Geometry> geometries = new ArrayList<Geometry>();
+        geometries.add(createPointA());
+        geometries.add(createPointB());
+        geometries.add(createLineStringAB());
+        
+        return new GeometryCollection(geometries);
+    }
     
 }

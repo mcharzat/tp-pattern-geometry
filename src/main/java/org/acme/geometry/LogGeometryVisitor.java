@@ -25,4 +25,10 @@ public class LogGeometryVisitor implements GeometryVisitor{
         out.println( "Je suis une polyligne défini par " + 
             lineString.getNumPoints() + " point(s).");
     }
+
+    @Override
+    public void visit(GeometryCollection geometryCollection) {
+        out.println( "Je suis une collection de géométries contenant " + 
+            geometryCollection.getNumGeometries() + " géométrie(s).");
+    }
 }

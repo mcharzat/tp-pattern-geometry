@@ -20,4 +20,44 @@ public class EnveloppeBuilderTest {
         Assert.assertEquals(2.0, result.getXmax(), EPSILON);
         Assert.assertEquals(3.0, result.getYmax(), EPSILON);
     }
+
+    @Test
+    public void testVisitPoint(){
+        Point point = SampleFactory.createPointA();
+        EnvelopeBuilder builder = new EnvelopeBuilder();
+
+        builder.visit(point);
+        Envelope envelope = builder.build();
+
+        Assert.assertEquals(3.14, envelope.getXmin(), EPSILON);
+        Assert.assertEquals(2.72, envelope.getYmin(), EPSILON);
+    }
+
+    @Test
+    public void testVisitLineString(){
+        LineString lineString = SampleFactory.createLineStringAB();
+        EnvelopeBuilder builder = new EnvelopeBuilder();
+
+        builder.visit(lineString);
+        Envelope envelope = builder.build();
+
+        Assert.assertEquals(3.14, envelope.getXmin(), EPSILON);
+        Assert.assertEquals(2.72, envelope.getYmin(), EPSILON);
+        Assert.assertEquals(31.4, envelope.getXmax(), EPSILON);
+        Assert.assertEquals(27.2, envelope.getYmax(), EPSILON);
+    }
+
+    @Test
+    public void testVisitGeometryCollection(){
+        GeometryCollection geometryCollection = SampleFactory.createGeometryCollection();
+        EnvelopeBuilder builder = new EnvelopeBuilder();
+
+        builder.visit(geometryCollection);
+        Envelope envelope = builder.build();
+
+        Assert.assertEquals(3.14, envelope.getXmin(), EPSILON);
+        Assert.assertEquals(2.72, envelope.getYmin(), EPSILON);
+        Assert.assertEquals(31.4, envelope.getXmax(), EPSILON);
+        Assert.assertEquals(27.2, envelope.getYmax(), EPSILON);
+    }
 }

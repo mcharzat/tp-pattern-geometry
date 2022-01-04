@@ -61,4 +61,12 @@ public class EnvelopeBuilder implements GeometryVisitor{
             this.insert(point.getCoordinate());
         }
     }
+
+    @Override
+    public void visit(GeometryCollection geometryCollection) {
+        for (int k = 0; k < geometryCollection.getNumGeometries(); k++){
+            Geometry geometry = geometryCollection.getGeometryN(k);
+            geometry.accept(this);
+        }
+    }
 }
