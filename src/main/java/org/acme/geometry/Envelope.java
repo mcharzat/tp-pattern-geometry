@@ -34,4 +34,8 @@ public class Envelope {
     public double getYmax(){
         return this.topRight.getY();
     }
+
+    public Envelope clone(){
+        return new Envelope(this.bottomLeft, this.topRight);
+    }
 }
