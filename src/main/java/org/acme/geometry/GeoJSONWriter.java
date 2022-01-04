@@ -12,7 +12,11 @@ public class GeoJSONWriter implements GeometryWriter{
 
     @Override
     public String write(Geometry geometry) {
-        // TODO Auto-generated method stub
-        return null;
+        String geoJson = "";
+
+        if ( geometry instanceof Point ) geoJson = "{'type':'Point'}";
+        else if ( geometry instanceof LineString ) geoJson = "{'type':'LineString'}";
+        else if ( geometry instanceof GeometryCollection ) geoJson = "{'type':'GeometryCollection'}";
+        return geoJson;
     }
 }
